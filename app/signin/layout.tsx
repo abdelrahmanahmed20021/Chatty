@@ -1,11 +1,9 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-import Home from "@/components/Home";
-
-export default function Root() {
+export default function layout({ children }: { children: React.ReactNode }) {
   if (!cookies().get("user")) {
-    redirect("/login");
+    redirect("/");
   }
-  return <Home />;
+  return children;
 }
